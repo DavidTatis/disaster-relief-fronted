@@ -10,7 +10,8 @@ function userReducer(state, action) {
     case "SIGN_OUT_SUCCESS":
       return { ...state, isAuthenticated: false };
     default: {
-      throw new Error(`Unhandled action type: ${action.type}`);
+      return { ...state, isAuthenticated: false };
+      //throw new Error(`Unhandled action type: ${action.type}`);
     }
   }
 }
@@ -50,10 +51,18 @@ export { UserProvider, useUserState, useUserDispatch, loginUser, signOut };
 // ###########################################################
 
 function loginUser(dispatch, login, password, history, setIsLoading, setError) {
-  setError(false);
+
   setIsLoading(true);
 
-  if (!!login && !!password) {
+  fetch('https://disaster-relief-x.herokuapp.com/Supply/users/')
+        .then(res => res.json())
+        .then((data) => {
+          console.log(data)
+        })
+        .catch(console.log)
+  setIsLoading(false);
+  setError(true);
+  if (false) {
     setTimeout(() => {
       localStorage.setItem('id_token', 1)
       setError(null)

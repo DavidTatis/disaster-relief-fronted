@@ -40,7 +40,7 @@ function Login(props) {
     <Grid container className={classes.container}>
       <div className={classes.logotypeContainer}>
         <img src={logo} alt="logo" className={classes.logotypeImage} />
-        <Typography className={classes.logotypeText}>Material Admin</Typography>
+        <Typography className={classes.logotypeText}>Disaster Relief</Typography>
       </div>
       <div className={classes.formContainer}>
         <div className={classes.form}>
@@ -59,15 +59,15 @@ function Login(props) {
               <Typography variant="h1" className={classes.greeting}>
                 Good Morning, User
               </Typography>
-              <Button size="large" className={classes.googleButton}>
-                <img src={google} alt="google" className={classes.googleIcon} />
-                &nbsp;Sign in with Google
-              </Button>
-              <div className={classes.formDividerContainer}>
-                <div className={classes.formDivider} />
-                <Typography className={classes.formDividerWord}>or</Typography>
-                <div className={classes.formDivider} />
-              </div>
+              {/*<Button size="large" className={classes.googleButton}>*/}
+              {/*  <img src={google} alt="google" className={classes.googleIcon} />*/}
+              {/*  &nbsp;Sign in with Google*/}
+              {/*</Button>*/}
+              {/*<div className={classes.formDividerContainer}>*/}
+              {/*  <div className={classes.formDivider} />*/}
+              {/*  <Typography className={classes.formDividerWord}>or</Typography>*/}
+              {/*  <div className={classes.formDivider} />*/}
+              {/*</div>*/}
               <Fade in={error}>
                 <Typography color="secondary" className={classes.errorMessage}>
                   Something is wrong with your login or password :(
@@ -226,26 +226,26 @@ function Login(props) {
                   </Button>
                 )}
               </div>
-              <div className={classes.formDividerContainer}>
-                <div className={classes.formDivider} />
-                <Typography className={classes.formDividerWord}>or</Typography>
-                <div className={classes.formDivider} />
-              </div>
-              <Button
-                size="large"
-                className={classnames(
-                  classes.googleButton,
-                  classes.googleButtonCreating,
-                )}
-              >
-                <img src={google} alt="google" className={classes.googleIcon} />
-                &nbsp;Sign in with Google
-              </Button>
+              {/*<div className={classes.formDividerContainer}>*/}
+              {/*  <div className={classes.formDivider} />*/}
+              {/*  <Typography className={classes.formDividerWord}>or</Typography>*/}
+              {/*  <div className={classes.formDivider} />*/}
+              {/*</div>*/}
+              {/*<Button*/}
+              {/*  size="large"*/}
+              {/*  className={classnames(*/}
+              {/*    classes.googleButton,*/}
+              {/*    classes.googleButtonCreating,*/}
+              {/*  )}*/}
+              {/*>*/}
+              {/*  <img src={google} alt="google" className={classes.googleIcon} />*/}
+              {/*  &nbsp;Sign in with Google*/}
+              {/*</Button>*/}
             </React.Fragment>
           )}
         </div>
         <Typography color="primary" className={classes.copyright}>
-          © 2014-2019 Flatlogic, LLC. All rights reserved.
+          © 2020 Los Iluminati All rights reserved.
         </Typography>
       </div>
     </Grid>
