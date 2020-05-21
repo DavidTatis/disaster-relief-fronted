@@ -1,4 +1,5 @@
 import React from "react";
+import {postLoginUser} from '../services/Api/users';
 
 var UserStateContext = React.createContext();
 var UserDispatchContext = React.createContext();
@@ -50,26 +51,21 @@ export { UserProvider, useUserState, useUserDispatch, loginUser, signOut };
 
 // ###########################################################
 
-function loginUser(dispatch, login, password, history, setIsLoading, setError) {
+async function loginUser(dispatch, login, password, history, setIsLoading, setError) {
 
   setIsLoading(true);
+  let data={};
 
-  fetch('https://disaster-relief-x.herokuapp.com/Supply/users/')
-        .then(res => res.json())
-        .then((data) => {
-          console.log(data)
-        })
-        .catch(console.log)
-  setIsLoading(false);
-  setError(true);
-  if (false) {
+  data=await postLoginUser(login,password);
+  if (data.User) {
     setTimeout(() => {
-      localStorage.setItem('id_token', 1)
+      localStorage.setItem('id_token', data.User.uid)
+      localStorage.setItem('user', JSON.stringify(data.User))
       setError(null)
       setIsLoading(false)
       dispatch({ type: 'LOGIN_SUCCESS' })
 
-      history.push('/app/dashboard')
+      history.push('/app/resources')
     }, 2000);
   } else {
     dispatch({ type: "LOGIN_FAILURE" });
@@ -80,6 +76,7 @@ function loginUser(dispatch, login, password, history, setIsLoading, setError) {
 
 function signOut(dispatch, history) {
   localStorage.removeItem("id_token");
+  localStorage.removeItem("user");
   dispatch({ type: "SIGN_OUT_SUCCESS" });
   history.push("/login");
 }

@@ -247,7 +247,9 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
       >
         <div className={classes.profileMenuUser}>
           <Typography variant="h4" weight="medium">
-            John Smith
+            {
+              localStorage.getItem("user")
+            }
           </Typography>
           <Typography
             className={classes.profileMenuLink}
@@ -255,7 +257,7 @@ const Header = ({ classes, isSidebarOpened, toggleSidebar, ...props }) => (
             color="primary"
             href="https://flatlogic.com"
           >
-            Flalogic.com
+
           </Typography>
         </div>
         <MenuItem

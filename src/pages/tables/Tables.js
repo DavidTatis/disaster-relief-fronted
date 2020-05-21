@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
+import {Grid, Toolbar} from "@material-ui/core";
 import MUIDataTable from "mui-datatables";
 
 // components
@@ -9,48 +9,112 @@ import Table from "../dashboard/components/Table/Table";
 
 // data
 import mock from "../dashboard/mock";
+import { useState, useEffect } from 'react';
+var datatableData =[];
+const columns = [
+ {
+  name: "rname",
+  label: "Name",
+  options: {
+   filter: true,
+   sort: true,
+  }
+ },{
+  name: "brand",
+  label: "Brand",
+  options: {
+   filter: true,
+   sort: true,
+  }
+ },{
+  name: "description",
+  label: "Description",
+  options: {
+   filter: true,
+   sort: true,
+  }
+ },{
+  name: "quantity",
+  label: "Quantity",
+  options: {
+   filter: true,
+   sort: true,
+  }
+ },{
+  name: "price",
+  label: "Price",
+  options: {
+   filter: true,
+   sort: true,
+  }
+ },{
+  name: "rid",
+  label: "Actions",
+  options: {
+   filter: true,
+   sort: true,
+   customBodyRender: (value, tableMeta, updateValue) => {
+            return (
+            <><input/>
+              <button onClick={() => {
+                console.log("value ", value);
 
-const datatableData = [
-  ["Joe James", "Example Inc.", "Yonkers", "NY"],
-  ["John Walsh", "Example Inc.", "Hartford", "CT"],
-  ["Bob Herm", "Example Inc.", "Tampa", "FL"],
-  ["James Houston", "Example Inc.", "Dallas", "TX"],
-  ["Prabhakar Linwood", "Example Inc.", "Hartford", "CT"],
-  ["Kaui Ignace", "Example Inc.", "Yonkers", "NY"],
-  ["Esperanza Susanne", "Example Inc.", "Hartford", "CT"],
-  ["Christian Birgitte", "Example Inc.", "Tampa", "FL"],
-  ["Meral Elias", "Example Inc.", "Hartford", "CT"],
-  ["Deep Pau", "Example Inc.", "Yonkers", "NY"],
-  ["Sebastiana Hani", "Example Inc.", "Dallas", "TX"],
-  ["Marciano Oihana", "Example Inc.", "Yonkers", "NY"],
-  ["Brigid Ankur", "Example Inc.", "Dallas", "TX"],
-  ["Anna Siranush", "Example Inc.", "Yonkers", "NY"],
-  ["Avram Sylva", "Example Inc.", "Hartford", "CT"],
-  ["Serafima Babatunde", "Example Inc.", "Tampa", "FL"],
-  ["Gaston Festus", "Example Inc.", "Tampa", "FL"],
-];
+              }}>
+                Buy
+              </button>
+                <button onClick={() => {
+                console.log("value ", value);
+              }}>
+                Reserve
+              </button>
+                <button onClick={() => {
+                console.log("value ", value);
+              }}>
+                Request
+              </button>
+                </>
+            );
+          }
+  }
+ }
 
-export default function Tables() {
-  return (
-    <>
-      <PageTitle title="Tables" />
-      <Grid container spacing={4}>
-        <Grid item xs={12}>
-          <MUIDataTable
-            title="Employee List"
-            data={datatableData}
-            columns={["Name", "Company", "City", "State"]}
-            options={{
-              filterType: "checkbox",
-            }}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <Widget title="Material-UI Table" upperTitle noBodyPadding>
-            <Table data={mock.table} />
-          </Widget>
-        </Grid>
-      </Grid>
-    </>
-  );
+ ]
+
+export class Tables extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {data: []};
+    }
+    async componentWillMount() {
+        await fetch('http://55.55.55.5:8080/Supply/resources/')
+        .then(res => res.json())
+        .then((dataResponse) => {
+          datatableData=dataResponse.resources;
+          this.setState({data:dataResponse.resources})
+        })
+        .catch(console.log)
+    }
+
+    render (){
+        return(
+             <>
+            <PageTitle title="Resources" />
+            <Grid container spacing={4}>
+              <Grid item xs={12}>
+                <MUIDataTable
+                  title="Resource List"
+                  data={this.state.data}
+                  columns={columns}
+                  options={{
+                    filterType: "checkbox",
+                  }}
+                />
+              </Grid>
+            </Grid>
+          </>
+        )
+
+    }
+
+
 }

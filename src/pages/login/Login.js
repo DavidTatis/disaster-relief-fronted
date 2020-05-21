@@ -32,7 +32,14 @@ function Login(props) {
   var [isLoading, setIsLoading] = useState(false);
   var [error, setError] = useState(null);
   var [activeTabId, setActiveTabId] = useState(0);
-  var [nameValue, setNameValue] = useState("");
+  var [firstNameValue, setFirstNameValue] = useState("");
+  var [lastNameValue, setLastNameValue] = useState("");
+  var [usernameValue, usernameValue] = useState("");
+  var [phoneValue, setPhoneValue] = useState("");
+  var [dateOfBirthValue, setDateOfBirthValue] = useState("");
+  var [addressValue, setAddressValue] = useState("");
+  var [emailValue, setEmailValue] = useState("");
+  var [zipCodeValue, setZipCodeValue] = useState("");
   var [loginValue, setLoginValue] = useState("");
   var [passwordValue, setPasswordValue] = useState("");
 
@@ -140,9 +147,9 @@ function Login(props) {
           )}
           {activeTabId === 1 && (
             <React.Fragment>
-              <Typography variant="h1" className={classes.greeting}>
-                Welcome!
-              </Typography>
+              {/*<Typography variant="h1" className={classes.greeting}>*/}
+              {/*  Welcome!*/}
+              {/*</Typography>*/}
               <Typography variant="h2" className={classes.subGreeting}>
                 Create your account
               </Typography>
@@ -152,17 +159,32 @@ function Login(props) {
                 </Typography>
               </Fade>
               <TextField
-                id="name"
+                id="firstName"
                 InputProps={{
                   classes: {
                     underline: classes.textFieldUnderline,
                     input: classes.textField,
                   },
                 }}
-                value={nameValue}
-                onChange={e => setNameValue(e.target.value)}
+                value={firstNameValue}
+                onChange={e => setFirstNameValue(e.target.value)}
                 margin="normal"
-                placeholder="Full Name"
+                placeholder="First Name"
+                type="text"
+                fullWidth
+              />
+               <TextField
+                id="lastName"
+                InputProps={{
+                  classes: {
+                    underline: classes.textFieldUnderline,
+                    input: classes.textField,
+                  },
+                }}
+                value={lastNameValue}
+                onChange={e => setLastNameValue(e.target.value)}
+                margin="normal"
+                placeholder="Last Name"
                 type="text"
                 fullWidth
               />
@@ -174,13 +196,14 @@ function Login(props) {
                     input: classes.textField,
                   },
                 }}
-                value={loginValue}
-                onChange={e => setLoginValue(e.target.value)}
+                value={emailValue}
+                onChange={e => setEmailValue(e.target.value)}
                 margin="normal"
                 placeholder="Email Adress"
                 type="email"
                 fullWidth
               />
+
               <TextField
                 id="password"
                 InputProps={{
@@ -194,6 +217,69 @@ function Login(props) {
                 margin="normal"
                 placeholder="Password"
                 type="password"
+                fullWidth
+              />
+              <TextField
+                id="phone"
+                InputProps={{
+                  classes: {
+                    underline: classes.textFieldUnderline,
+                    input: classes.textField,
+                  },
+                }}
+                value={phoneValue}
+                onChange={e => setPhoneValue(e.target.value)}
+                margin="normal"
+                placeholder="Phone number"
+                type="phone"
+                fullWidth
+              />
+              <Typography color="secondary" className={classes.infoMessage}>
+                  <br></br>Date of birth
+                </Typography>
+              <TextField
+                id="dateOfBirth"
+                InputProps={{
+                  classes: {
+                    underline: classes.textFieldUnderline,
+                    input: classes.textField,
+                  },
+                }}
+                value={dateOfBirthValue}
+                onChange={e => setDateOfBirthValue(e.target.value)}
+                margin="normal"
+                placeholder="Date of birth"
+                type="date"
+                fullWidth
+              />
+              <TextField
+                id="address"
+                InputProps={{
+                  classes: {
+                    underline: classes.textFieldUnderline,
+                    input: classes.textField,
+                  },
+                }}
+                value={addressValue}
+                onChange={e => setAddressValue(e.target.value)}
+                margin="normal"
+                placeholder="address"
+                type="Address"
+                fullWidth
+              />
+              <TextField
+                id="zipCode"
+                InputProps={{
+                  classes: {
+                    underline: classes.textFieldUnderline,
+                    input: classes.textField,
+                  },
+                }}
+                value={zipCodeValue}
+                onChange={e => setZipCodeValue(e.target.value)}
+                margin="normal"
+                placeholder="Zip code"
+                type="zipcode"
                 fullWidth
               />
               <div className={classes.creatingButtonContainer}>
@@ -214,7 +300,13 @@ function Login(props) {
                     disabled={
                       loginValue.length === 0 ||
                       passwordValue.length === 0 ||
-                      nameValue.length === 0
+                      firstNameValue.length === 0 ||
+                      lastNameValue.length === 0 ||
+                      emailValue.length === 0 ||
+                      phoneValue.length === 0 ||
+                      dateOfBirthValue.length === 0 ||
+                      addressValue.length === 0 ||
+                      zipCodeValue.length === 0
                     }
                     size="large"
                     variant="contained"
