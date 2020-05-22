@@ -5,7 +5,7 @@ async function postLoginUser(username,password) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: username,password:password })
     };
-    const response = await fetch('http://55.55.55.5:8080/Supply/users/login/', requestOptions);
+    const response = await fetch('http://disaster-relief-x.herokuapp.com/aid/users/login/', requestOptions);
     const data = await response.json();
     return data;
 }

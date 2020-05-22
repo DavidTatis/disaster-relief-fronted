@@ -86,7 +86,7 @@ export class Tables extends React.Component {
         this.state = {data: []};
     }
     async componentWillMount() {
-        await fetch('http://55.55.55.5:8080/Supply/resources/')
+        await fetch('http://disaster-relief-x.herokuapp.com/aid/resources/')
         .then(res => res.json())
         .then((dataResponse) => {
           datatableData=dataResponse.resources;
