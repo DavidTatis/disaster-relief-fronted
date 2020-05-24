@@ -10,6 +10,11 @@ import Table from "../dashboard/components/Table/Table";
 // data
 import mock from "../dashboard/mock";
 import { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import useStyles from "../notifications/styles";
+// import useStyles from "./styles";
+
 var datatableData =[];
 const columns = [
  {
@@ -54,10 +59,16 @@ const columns = [
    filter: true,
    sort: true,
    customBodyRender: (value, tableMeta, updateValue) => {
+            let selectedQuantity;
             return (
-            <><input/>
+            <><input type="number" style={{width:50}} onChange={(event => selectedQuantity=event.target.value)}/>
               <button onClick={() => {
+
+                toast('Toast Message');
                 console.log("value ", value);
+                console.log("quantity ", selectedQuantity);
+                var d = new Date();
+                console.log("date ",d.getTime());
 
               }}>
                 Buy
@@ -80,6 +91,7 @@ const columns = [
 
  ]
 
+
 export class Tables extends React.Component {
     constructor(props) {
         super(props);
@@ -96,8 +108,10 @@ export class Tables extends React.Component {
     }
 
     render (){
+
         return(
              <>
+                 <ToastContainers/>
             <PageTitle title="Resources" />
             <Grid container spacing={4}>
               <Grid item xs={12}>
