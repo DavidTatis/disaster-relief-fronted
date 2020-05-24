@@ -58,6 +58,12 @@ export default makeStyles(theme => ({
     fontWeight: 400,
     fontSize: 18,
   },
+  tabSecondary: {
+    fontWeight: 400,
+    fontSize: 12,
+    minWidth:80,
+    width:80
+  },
   greeting: {
     fontWeight: 500,
     textAlign: "center",
