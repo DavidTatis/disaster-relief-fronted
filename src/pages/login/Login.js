@@ -43,8 +43,8 @@ function Login(props) {
   var [addressValue, setAddressValue] = useState("");
   var [emailValue, setEmailValue] = useState("");
   var [zipCodeValue, setZipCodeValue] = useState("");
-  var [loginValue, setLoginValue] = useState("");
-  var [passwordValue, setPasswordValue] = useState("");
+  var [loginValue, setLoginValue] = useState("Ariel");
+  var [passwordValue, setPasswordValue] = useState("123123");
   var [priorityValue, setPriorityValue] = useState("1");
   var [salaryValue, setSalaryValue] = useState("");
   var [occupationValue, setOccupationValue] = useState("");
